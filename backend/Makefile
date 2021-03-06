@@ -9,12 +9,12 @@ install-base:
 	pip install -r ./requirements/base.txt
 install-development:
 	pip install -r ./requirements/development.txt
-install-production:
-	pip install -r ./requirements/production.txt
+install-heroku:
+	pip install -r ./requirements/heroku.txt
 migrate:
 	python manage.py migrate --settings=kubar.settings.development
 
 install: install-base migrate
 install-dev: install-development migrate
-install-prod: install-production migrate
+install-prod: install-heroku migrate
 reset-db: clear-tables migrate

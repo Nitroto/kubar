@@ -11,15 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import datetime
 import os
-from os.path import abspath
-from pathlib import Path
 
 import dj_database_url
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-PROJECT_ROOT = os.path.join(BASE_DIR, os.pardir)
 BACKEND_BASE_DIR = os.path.dirname(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 )
@@ -43,7 +39,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ORIGIN_WHITELIST = []
-CSRF_TRUSTED_ORIGINS = ['volvita.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['kubar.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -136,27 +132,13 @@ LANGUAGES = (
     ('bg', 'Bulgarian'),
 )
 
+SECURE_SSL_REDIRECT = True
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
-
-# STATIC FILES setup
-STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-]
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-STATIC_ROOT = abspath(os.path.join(PROJECT_ROOT, 'staticfiles'))
-
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, os.pardir, 'conf', 'locale'),
-)
-
-SECURE_SSL_REDIRECT = True
+STATIC_ROOT = os.path.join(FRONTEND_BASE_DIR, 'build/static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 WHITENOISE_ROOT = os.path.join(FRONTEND_BASE_DIR, 'public')
 
@@ -175,5 +157,3 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'kubar.utils.jwt_response_handler',
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=365),
 }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

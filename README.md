@@ -22,7 +22,6 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 
 ### Set environment variables
 - `DATABASE_URL`. For example: `postgres://USER:PASSWORD@HOST:PORT/NAME`
-- `PYTHONPATH`. Point it to the outer `kubar` dir, since our python does not live in the root directory
 - `DJANGO_SECRET_KEY`. Create one with:  
     ```
     $ python
