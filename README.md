@@ -36,7 +36,7 @@ Backend Django server (port 8000):
 `$ python backend/manage.py runserver --settings=kubar.settings.development`
 
 Frontend Svelte server (port 8080):  
-`$ cd frontend`  
+`$ cd frontend/web`  
 `$ npm run dev`  
 
 

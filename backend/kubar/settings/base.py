@@ -38,7 +38,7 @@ SECRET_KEY = env.str('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['.herokuapp.com']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -93,6 +93,12 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'kubar.wsgi.application'
+
+# Database
+# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=env.bool('SSL_REQUIRE', default=False))
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -170,18 +176,4 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=365),
 }
 
-
-class DisableMigrations(object):
-    """
-    Wrapper to be used with MIGRATION_MODULES to disable all migrations
-    Disable Migrations using MIGRATION_MODULES = DisableMigrations()
-    """
-
-    # Inspired by this fix
-    # https://github.com/henriquebastos/django-test-without-migrations/
-    # blob/master/test_without_migrations/management/commands/_base.py
-    def __contains__(self, item):
-        return True
-
-    def __getitem__(self, item):
-        return None
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
