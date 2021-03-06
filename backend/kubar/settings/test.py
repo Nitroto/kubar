@@ -17,13 +17,12 @@ class DisableMigrations(object):
         return None
 
 
-DEBUG = False
 CHECKLIST_SUPPRESS_ERRORS = True
 
 MIGRATION_MODULES = DisableMigrations()
 
-PASSWORD_HASHERS = [
-    'django.contrib.auth.hashers.MD5PasswordHasher',
-]
+PASSWORD_HASHERS = ['django.contrib.auth.hashers.MD5PasswordHasher', ]
 
 SITE_HOST = 'http://test'
+
+EMAIL_BACKEND = 'django.core.mail.backends.locmem.EmailBackend'

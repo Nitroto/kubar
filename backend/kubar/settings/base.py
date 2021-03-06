@@ -22,11 +22,10 @@ BACKEND_BASE_DIR = os.path.dirname(
 APP_ROOT = os.path.dirname(BACKEND_BASE_DIR)
 FRONTEND_BASE_DIR = f'{APP_ROOT}/frontend/web'
 
+# Quick-start .env settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 env = environ.Env()
 environ.Env.read_env()
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
@@ -37,9 +36,6 @@ DEBUG = env.bool('DEBUG', default=False)
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 CORS_ALLOW_CREDENTIALS = True
-
-CORS_ORIGIN_WHITELIST = []
-CSRF_TRUSTED_ORIGINS = ['kubar.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
