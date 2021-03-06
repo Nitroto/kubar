@@ -3,10 +3,12 @@
 import os
 import sys
 
+_DEFAULT_SETTING = 'kubar.settings.development'
+
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'kubar.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', _DEFAULT_SETTING)
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

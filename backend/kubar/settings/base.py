@@ -9,29 +9,43 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import datetime
+import os
+from os.path import abspath
 from pathlib import Path
 
+import dj_database_url
+import environ
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-import django
-
-from kubar.settings import secret_keys
-
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = os.path.join(BASE_DIR, os.pardir)
+BACKEND_BASE_DIR = os.path.dirname(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+)
+APP_ROOT = os.path.dirname(BACKEND_BASE_DIR)
+FRONTEND_BASE_DIR = f'{APP_ROOT}/frontend/web'
+
+env = environ.Env()
+environ.Env.read_env()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secret_keys.SECRET_KEY
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.herokuapp.com']
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_WHITELIST = []
+CSRF_TRUSTED_ORIGINS = ['volvita.herokuapp.com']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,16 +55,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third party apps
+    'rest_framework',
+    'corsheaders',
 
     # Kubar apps
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'kubar.authentication_middleware_jwt.AuthenticationMiddlewareJWT',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -60,7 +79,7 @@ ROOT_URLCONF = 'kubar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(FRONTEND_BASE_DIR, 'public')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +125,63 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = (
+    ('en', 'English'),
+    ('bg', 'Bulgarian'),
+)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC FILES setup
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATIC_ROOT = abspath(os.path.join(PROJECT_ROOT, 'staticfiles'))
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, os.pardir, 'conf', 'locale'),
+)
+
+SECURE_SSL_REDIRECT = True
+
+WHITENOISE_ROOT = os.path.join(FRONTEND_BASE_DIR, 'public')
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'kubar.utils.jwt_response_handler',
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=365),
+}
+
+
+class DisableMigrations(object):
+    """
+    Wrapper to be used with MIGRATION_MODULES to disable all migrations
+    Disable Migrations using MIGRATION_MODULES = DisableMigrations()
+    """
+
+    # Inspired by this fix
+    # https://github.com/henriquebastos/django-test-without-migrations/
+    # blob/master/test_without_migrations/management/commands/_base.py
+    def __contains__(self, item):
+        return True
+
+    def __getitem__(self, item):
+        return None

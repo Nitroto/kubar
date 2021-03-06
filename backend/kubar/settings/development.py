@@ -1,22 +1,18 @@
 from .base import *
 
-DEBUG = True
+assert SECURE_SSL_REDIRECT
+
+SECURE_SSL_REDIRECT = False
 SITE_HOST = 'http://localhost:8000'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS.append('corsheaders')
-MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+CSRF_COOKIE_SECURE = False
+CORS_ORIGIN_WHITELIST = ['http://localhost:8080', 'http://127.0.0.1:8080']
+CSRF_TRUSTED_ORIGINS = ['localhost', '127.0.0.1']
 
 LANGUAGE_CODE = 'en'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'kubar_dev',
-        'USER': 'comstream',
-        'PASSWORD': 'comstreamdev',
-        'HOST': 'localhost',
-        'PORT': '5432'
-    }
+    'default': dj_database_url.config(conn_max_age=600)
 }
