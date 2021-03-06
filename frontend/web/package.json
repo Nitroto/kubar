@@ -1,5 +1,8 @@
 {
-  "name": "svelte-app",
+  "name": "kubar-app",
+  "repository": "github:git@github.com:Nitroto/kubar",
+  "license": "Unlicense",
+  "description": "Django-Svelte SPAs",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",

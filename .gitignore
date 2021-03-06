@@ -130,6 +130,3 @@ dmypy.json
 
 # JetBrains
 .idea/
-
-# Secret keys
-backend/kubar/settings/secret_keys.py
