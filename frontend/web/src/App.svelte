@@ -1,30 +1,52 @@
 <script lang="ts">
-	export let name: string;
+    import Layout from './components/Layout.svelte'
+    import ThemeContext from './components/ThemeContext.svelte'
+    import ThemeToggle from './components/ThemeToggle.svelte'
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<ThemeContext>
+    <Layout header hideHeader headerHeight={56} let:scroller>
+        <div slot="header">
+            <div class="header" class:shadow={!!scroller.scroll}>
+                Kubar Events Manager
+                <ThemeToggle/>
+            </div>
+        </div>
+        <main>
+            <h1>List of events</h1>
+        </main>
+        <div slot="footer">
+            <div class="footer" class:shadow={!!scroller.scroll}>
+                Created by Asen Todorov
+            </div>
+        </div>
+    </Layout>
+</ThemeContext>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+    :global(html) {
+        background-color: var(--theme-background);
+        color: var(--theme-text);
+    }
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+    .header {
+        background-color: var(--theme-primary);
+        height: 56px;
+        line-height: 56px;
+        color: white;
+        padding-left: 16px;
+    }
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
+    .shadow {
+        box-shadow: 0 2px 8px #00000088;
+    }
+
+    main {
+        font-family: sans-serif;
+        text-align: center;
+    }
+
+    .footer {
+        text-align: center;
+    }
 </style>
