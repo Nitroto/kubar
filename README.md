@@ -5,8 +5,9 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 ## Tech stack
 
 ### Web
-- [Svelte 3](https://svelte.dev/) with [TypeScript](https://www.typescriptlang.org/)
+- [Svelte 3](https://svelte.dev/) with [TypeScript](https://www.typescriptlang.org/) 
 - [webpack](https://webpack.js.org/)
+- [Svelma](https://c0bra.github.io/svelma)
 
 ### Mobile
 - [React Native](https://reactnative.dev/) with [TypeScript](https://www.typescriptlang.org/)
