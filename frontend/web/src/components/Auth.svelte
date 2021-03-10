@@ -1,75 +1,75 @@
 <script>
-    import {deleteCsrfToken, deleteToken, getCsrfToken, getToken, setCsrfToken} from '../utils.ts'
+    import { deleteCsrfToken, deleteToken, getCsrfToken, getToken, setCsrfToken } from '../utils.ts';
     import {
         fetchAuthToken,
         fetchCreateUser,
         fetchCsrfToken,
         fetchUserData,
         validateInputs
-    } from '../../../shared/auth.ts'
+    } from '../../../shared/auth.ts';
 
-    export let isLoggedIn
-    let id, username, email
-    let wantsToSignUp = false
-    let usernameInput = ''
-    let passwordInput = ''
-    let isMessageError = false
-    let message = ''
+    export let isLoggedIn;
+    let id, username, email;
+    let wantsToSignUp = false;
+    let usernameInput = '';
+    let passwordInput = '';
+    let isMessageError = false;
+    let message = '';
     if (getToken()) {
         // if we have a token saved to local storage,
         // then log them in automatically
-        fetchUserData_().then(fetchCsrfToken_())
+        fetchUserData_().then(fetchCsrfToken_());
         // Also get a new CSRF token always
     }
 
     function setUserData(json) {
-        id = json.id
-        username = json.username
-        email = json.email
-        isLoggedIn = true
-        isMessageError = false
-        message = 'Logged in as ' + username
+        id = json.id;
+        username = json.username;
+        email = json.email;
+        isLoggedIn = true;
+        isMessageError = false;
+        message = 'Logged in as ' + username;
     }
 
     function clearUserData() {
-        id = null
-        username = null
-        email = null
-        isLoggedIn = false
-        isMessageError = false
-        message = 'Logged out'
+        id = null;
+        username = null;
+        email = null;
+        isLoggedIn = false;
+        isMessageError = false;
+        message = 'Logged out';
     }
 
     async function fetchUserData_() {
-        let token = getToken()
+        let token = getToken();
         if (token) {
             try {
                 fetchUserData(token)
                     .then(res => res.json())
                     .then(json => {
                         if (json.username) {
-                            setUserData(json)
+                            setUserData(json);
                         } else {
-                            deleteToken()
+                            deleteToken();
                         }
                     })
                     .catch(err => {
-                        console.log(err)
-                    })
+                        console.log(err);
+                    });
             } catch (error) {
-                console.log('threw error when fetching username: ' + error)
-                deleteToken()
+                console.log('threw error when fetching username: ' + error);
+                deleteToken();
             }
         } else {
-            clearUserData()
-            console.log('cannot get username because we have no token')
+            clearUserData();
+            console.log('cannot get username because we have no token');
         }
     }
 
     function logOut() {
-        deleteToken()
-        deleteCsrfToken()
-        clearUserData()
+        deleteToken();
+        deleteCsrfToken();
+        clearUserData();
     }
 
     async function fetchAuthToken_() {
@@ -78,40 +78,40 @@
                 .then(res => res.json())
                 .then(json => {
                     if (json.token && json.user) {
-                        localStorage.setItem('token', json.token)
-                        setUserData(json.user)
+                        localStorage.setItem('token', json.token);
+                        setUserData(json.user);
                     } else {
-                        isMessageError = true
-                        message = 'Error logging in'
+                        isMessageError = true;
+                        message = 'Error logging in';
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                })
+                    console.log(err);
+                });
         }
     }
 
     function fetchCsrfToken_() {
-        let token = getToken()
+        let token = getToken();
         if (token && !getCsrfToken()) {
             fetchCsrfToken(token)
                 .then(res => res.json())
                 .then(json => {
                     if (json.csrf_token) {
-                        setCsrfToken(json.csrf_token)
+                        setCsrfToken(json.csrf_token);
                     } else {
-                        isMessageError = true
-                        message = 'Error getting CSRF token'
+                        isMessageError = true;
+                        message = 'Error getting CSRF token';
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                })
+                    console.log(err);
+                });
         }
     }
 
     function logIn() {
-        fetchAuthToken_().then(fetchCsrfToken_())
+        fetchAuthToken_().then(fetchCsrfToken_());
     }
 
     function signUp() {
@@ -120,16 +120,16 @@
                 .then(res => res.json())
                 .then(json => {
                     if (json.token) {
-                        localStorage.setItem('token', json.token)
-                        setUserData(json)
+                        localStorage.setItem('token', json.token);
+                        setUserData(json);
                     } else {
-                        isMessageError = true
-                        message = json.username
+                        isMessageError = true;
+                        message = json.username;
                     }
                 })
                 .catch(err => {
-                    console.log(err)
-                })
+                    console.log(err);
+                });
         }
     }
 </script>
@@ -247,14 +247,14 @@
                             type="text"
                             name="username"
                             bind:value={usernameInput}
-                            placeholder="username"/>
+                            placeholder="username" />
                 </p>
                 <p>
                     <input
                             type="password"
                             name="password"
                             bind:value={passwordInput}
-                            placeholder="password"/>
+                            placeholder="password" />
                 </p>
             </div>
             <div class="button-container">

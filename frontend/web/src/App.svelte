@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Layout from './components/Layout.svelte'
-    import ThemeContext from './components/ThemeContext.svelte'
-    import ThemeToggle from './components/ThemeToggle.svelte'
+    import Layout from './components/Layout.svelte';
+    import ThemeContext from './components/ThemeContext.svelte';
+    import ThemeToggle from './components/ThemeToggle.svelte';
 </script>
 
 <ThemeContext>

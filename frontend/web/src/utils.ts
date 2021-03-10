@@ -1,25 +1,25 @@
 function getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
 }
 
 function deleteToken() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('token');
 }
 
 function setToken(token) {
-    localStorage.setItem('token', token)
+    localStorage.setItem('token', token);
 }
 
 function getCsrfToken() {
-    return localStorage.getItem('csrfToken')
+    return localStorage.getItem('csrfToken');
 }
 
 function deleteCsrfToken() {
-    localStorage.removeItem('csrfToken')
+    localStorage.removeItem('csrfToken');
 }
 
 function setCsrfToken(token) {
-    localStorage.setItem('csrfToken', token)
+    localStorage.setItem('csrfToken', token);
 }
 
-export {getToken, deleteToken, setToken, getCsrfToken, deleteCsrfToken, setCsrfToken}
+export { getToken, deleteToken, setToken, getCsrfToken, deleteCsrfToken, setCsrfToken };

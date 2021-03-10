@@ -1,15 +1,15 @@
-let API_HOST
+let API_HOST;
 
 
-const url = ''
+const url = '';
 
-const prodDatabase = false
-const hostname = window && window.location && window.location.hostname
+const prodDatabase = false;
+const hostname = window && window.location && window.location.hostname;
 
 if (hostname === url || prodDatabase) {
-    API_HOST = 'https://' + url
+    API_HOST = 'https://' + url;
 } else {
-    API_HOST = 'http://127.0.0.1:8000'
+    API_HOST = 'http://127.0.0.1:8000';
 }
 
-export {API_HOST}
+export { API_HOST };

@@ -1,46 +1,46 @@
-import { API_HOST } from "./api.js"
+import { API_HOST } from './api';
 
 function fetchUserData(token) {
-    return fetch(`${API_HOST}/self/`, {
+    return fetch(`${ API_HOST }/self/`, {
         headers: {
-            Authorization: `JWT ${token}`
+            Authorization: `JWT ${ token }`
         }
-    })
+    });
 }
 
 function fetchAuthToken(username, password) {
-    return fetch(`${API_HOST}/token/`, {
-        method: "POST",
+    return fetch(`${ API_HOST }/token/`, {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             username: username,
             password: password
         })
-    })
+    });
 }
 
 function fetchCreateUser(username, password) {
-    return fetch(`${API_HOST}/users/`, {
-        method: "POST",
+    return fetch(`${ API_HOST }/users/`, {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             username: username,
             password: password
         })
-    })
+    });
 }
 
 function fetchCsrfToken(token) {
-    return fetch(`${API_HOST}/csrf/`, {
-        method: "GET",
+    return fetch(`${ API_HOST }/csrf/`, {
+        method: 'GET',
         headers: {
-            Authorization: `JWT ${token}`
+            Authorization: `JWT ${ token }`
         }
-    })
+    });
 }
 
 function validateInputs(usernameInput, passwordInput) {
@@ -49,13 +49,14 @@ function validateInputs(usernameInput, passwordInput) {
     } else {
         isMessageError = true;
         if (!usernameInput && !passwordInput) {
-            message = "Username and password cannot be blank";
+            message = 'Username and password cannot be blank';
         } else if (!usernameInput) {
-            message = "Username cannot be blank";
+            message = 'Username cannot be blank';
         } else if (!passwordInput) {
-            message = "Password cannot be blank";
+            message = 'Password cannot be blank';
         }
         return false;
     }
 }
-export { validateInputs, fetchUserData, fetchAuthToken, fetchCreateUser, fetchCsrfToken }
+
+export { validateInputs, fetchUserData, fetchAuthToken, fetchCreateUser, fetchCsrfToken };
