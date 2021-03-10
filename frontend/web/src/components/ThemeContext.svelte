@@ -34,7 +34,7 @@
     // ex: var(--theme-background)
     const setRootColors = theme => {
         for (let [prop, color] of Object.entries(theme.colors)) {
-            let varString = `--theme-${ prop }`;
+            let varString = `--theme-${prop}`;
             document.documentElement.style.setProperty(varString, color);
         }
         document.documentElement.style.setProperty('--theme-name', theme.name);

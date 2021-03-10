@@ -1,15 +1,15 @@
 import { API_HOST } from './api';
 
 function fetchUserData(token) {
-    return fetch(`${ API_HOST }/self/`, {
+    return fetch(`${API_HOST}/self/`, {
         headers: {
-            Authorization: `JWT ${ token }`
+            Authorization: `JWT ${token}`
         }
     });
 }
 
 function fetchAuthToken(username, password) {
-    return fetch(`${ API_HOST }/token/`, {
+    return fetch(`${API_HOST}/token/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -22,7 +22,7 @@ function fetchAuthToken(username, password) {
 }
 
 function fetchCreateUser(username, password) {
-    return fetch(`${ API_HOST }/users/`, {
+    return fetch(`${API_HOST}/users/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -35,10 +35,10 @@ function fetchCreateUser(username, password) {
 }
 
 function fetchCsrfToken(token) {
-    return fetch(`${ API_HOST }/csrf/`, {
+    return fetch(`${API_HOST}/csrf/`, {
         method: 'GET',
         headers: {
-            Authorization: `JWT ${ token }`
+            Authorization: `JWT ${token}`
         }
     });
 }

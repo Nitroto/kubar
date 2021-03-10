@@ -9,7 +9,7 @@
         <div slot="header">
             <div class="header" class:shadow={!!scroller.scroll}>
                 Kubar Events Manager
-                <ThemeToggle/>
+                <ThemeToggle />
             </div>
         </div>
         <main>

@@ -27,7 +27,7 @@
             hide: scroll > threshold && scroller.hide
                 ? scroll - scroller.initialScroll > -threshold
                 : scroll - scroller.initialScroll > threshold,
-            initialScroll: (scroll > scroller.scroll) != scroller.direction
+            initialScroll: (scroll > scroller.scroll) !== scroller.direction
                 ? scroll
                 : scroller.initialScroll
         };
