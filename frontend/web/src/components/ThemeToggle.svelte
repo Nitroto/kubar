@@ -1,7 +1,8 @@
 <script>
     import { getContext } from 'svelte';
+    import { Button } from 'svelma';
 
     const { theme, toggle } = getContext('theme');
 </script>
 
-<button on:click={toggle}>{$theme.name}</button>
+<Button on:click={toggle}>{$theme.name}</Button>

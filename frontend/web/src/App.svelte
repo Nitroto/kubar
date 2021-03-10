@@ -1,4 +1,5 @@
 <script lang="ts">
+    import 'bulma/css/bulma.css';
     import Layout from './components/Layout.svelte';
     import ThemeContext from './components/ThemeContext.svelte';
     import ThemeToggle from './components/ThemeToggle.svelte';
