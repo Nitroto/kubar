@@ -10,6 +10,9 @@
     "start": "sirv public",
     "validate": "svelte-check"
   },
+  "engines": {
+    "node": "15.x"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
