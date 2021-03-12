@@ -52,41 +52,34 @@
     <slot name="footer" />
 </div>
 
-<style lang="scss">
-  main {
-    height: 100%;
-    overflow-y: auto;
+<style lang="sass">
+  main
+    height: 100%
+    overflow-y: auto
 
-    &.header {
-      padding-top: var(--header-height, 0);
-    }
+    &.header
+      padding-top: var(--header-height, 0)
 
-    &.footer {
-      padding-bottom: var(--footer-height, 0);
-    }
-  }
+    &.footer
+      padding-bottom: var(--footer-height, 0)
 
-  .slotHeader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: all 0.2s ease-in-out;
+  .slotHeader
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    transition: all 0.2s ease-in-out
 
-    &.hide {
-      transform: translateY(-100%);
-    }
-  }
+    &.hide
+      transform: translateY(-100%)
 
-  .slotFooter {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    transition: all 0.2s ease-in-out;
+  .slotFooter
+    position: fixed
+    bottom: 0
+    left: 0
+    width: 100%
+    transition: all 0.2s ease-in-out
 
-    &.hide {
-      transform: translateY(100%);
-    }
-  }
+    &.hide
+      transform: translateY(100%)
 </style>

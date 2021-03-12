@@ -134,82 +134,67 @@
     }
 </script>
 
-<style lang="scss">
-  .container {
-    width: 2in;
-    border-style: solid;
-    margin: 10px;
-    padding: 0 0 5px 0;
-  }
+<style lang="sass">
+  .container
+    width: 2in
+    border-style: solid
+    margin: 10px
+    padding: 0 0 5px 0
 
-  .message-container {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    padding: 10px 0 5px 0;
-  }
+  .message-container
+    display: flex
+    justify-content: center
+    text-align: center
+    padding: 10px 0 5px 0
 
-  .message-success {
-    color: #39ff14;
-  }
+  .message-success
+    color: #39ff14
 
-  .message-error {
-    color: #ffbcd9;
-  }
+  .message-error
+    color: #ffbcd9
 
-  button {
-    height: 40px;
-    width: 80px;
-    margin: 5px auto 5px auto;
-    background: #999999;
-    color: white;
-    cursor: pointer;
-  }
+  button
+    height: 40px
+    width: 80px
+    margin: 5px auto 5px auto
+    background: #999999
+    color: white
+    cursor: pointer
 
-  .button:active {
-    transform: translateY(3px);
-  }
+  .button:active
+    transform: translateY(3px)
 
-  .button-submit {
-    display: flex;
+  .button-submit
+    display: flex
 
-    &:hover {
-      background-color: #39ff14;
-      color: #222222;
-    }
-  }
+    &:hover
+      background-color: #39ff14
+      color: #222222
 
-  .button-log-out {
-    display: flex;
-  }
+  .button-log-out
+    display: flex
 
-  .button-container {
-    display: block;
-    text-align: center;
-  }
+  .button-container
+    display: block
+    text-align: center
 
-  .button-log-in {
-    display: inline-flex;
-  }
+  .button-log-in
+    display: inline-flex
 
-  .button-active {
-    background-color: cyan;
-    color: black;
-  }
+  .button-active
+    background-color: cyan
+    color: black
 
-  .button-text {
-    margin: auto;
-  }
+  .button-text
+    margin: auto
 
-  .inputs {
-    display: block;
-    text-align: center;
-    margin: 0 auto;
-  }
+  .inputs
+    display: block
+    text-align: center
+    margin: 0 auto
 
-  p {
-    margin: 10px 0 0 0;
-  }
+  p
+    margin: 10px 0 0 0
 </style>
 
 <div>
