@@ -1,36 +1,46 @@
-# Kubar Events manager based on Django REST framework and Svelte 
+# Kubar Events manager based on Django REST framework and Svelte
 
 This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to help you deploy with heroku.
 
 ## Tech stack
 
 ### Web
-- [Svelte 3](https://svelte.dev/) with [TypeScript](https://www.typescriptlang.org/) 
-- [webpack](https://webpack.js.org/)
-- [Svelma](https://c0bra.github.io/svelma)
+
+- [Svelte 3](https://svelte.dev/) with
+- [TypeScript](https://www.typescriptlang.org/)
+- [GraphQL](https://graphql.org/)
+- [rollup.js](https://rollupjs.org/)
+- [Svelte Material UI](https://sveltematerialui.com/)
 
 ### Mobile
-- [React Native](https://reactnative.dev/) with [TypeScript](https://www.typescriptlang.org/)
+
+- [React Native](https://reactnative.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 - [expo](https://expo.io/)
 
 ### Backend
+
 - [Python 3.9](https://www.python.org/)
-- [Django 3.1.7](https://www.djangoproject.com/) with ([Django REST framework](https://www.django-rest-framework.org/))
+- [Django 3.1.7](https://www.djangoproject.com/)
+- [Django REST framework](https://www.django-rest-framework.org/)
+- [Graphene Django](https://docs.graphene-python.org/)
 - [gunicorn](https://gunicorn.org/)
 - [Whitenoise](http://whitenoise.evans.io/en/stable/)
 
 ## Instructions
 
 ### Set environment variables
+
 - `DATABASE_URL` - For example: `postgres://USER:PASSWORD@HOST:PORT/NAME`
-- `SECRET_KEY` - Create one with:  
+- `SECRET_KEY` - Create one with:
     ```
     $ python
     >>> from django.core.management.utils import get_random_secret_key
     >>> get_random_secret_key()
     ```
 - `DEBUG` - Default value False for Development environment should be True
-- `ALLOWED_HOSTS` - add allowed hosts, default is empty list. [Django documentation](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts)
+- `ALLOWED_HOSTS` - add allowed hosts, default is empty
+  list. [Django documentation](https://docs.djangoproject.com/en/3.1/ref/settings/#allowed-hosts)
 - `SSL_REQUIRE` - Default value True for Development environment should be False
 
 .env file can be used, put it in settings folder `backend/kubar/settings`
@@ -42,10 +52,11 @@ Backend Django server (port 8000):
 
 Frontend Svelte server (port 8080):  
 `$ cd frontend/web`  
-`$ npm run dev`  
-
+`$ npm run dev`
 
 ### Deploying to Heroku
-- Use the buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
-```$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir```
+
+- Use the
+  buildpack [negativetwelve/heroku-buildpack-subdir](https://github.com/negativetwelve/heroku-buildpack-subdir):  
+  ```$ heroku buildpacks:set https://github.com/negativetwelve/heroku-buildpack-subdir```
 - This uses the `.buildpacks` definition in the app root

@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from django.views.generic import TemplateView
+from graphene_django.views import GraphQLView
 from rest_framework_jwt.views import obtain_jwt_token
 
 from . import views
@@ -28,5 +29,6 @@ urlpatterns = [
     path('csrf/', views.create_csrf_token),
     path('users/', views.UserList.as_view()),
     path('self/', views.current_user),
+    path('graphql', GraphQLView.as_view(graphiql=True)),
     re_path(r'', single_page_app),
 ]

@@ -1,5 +1,4 @@
 <script lang="ts">
-    import 'bulma/css/bulma.css';
     import Layout from './components/Layout.svelte';
     import ThemeContext from './components/ThemeContext.svelte';
     import ThemeToggle from './components/ThemeToggle.svelte';
@@ -24,30 +23,30 @@
     </Layout>
 </ThemeContext>
 
-<style>
-    :global(html) {
-        background-color: var(--theme-background);
-        color: var(--theme-text);
-    }
+<style lang="scss">
+  :global(html) {
+    background-color: var(--theme-background);
+    color: var(--theme-text);
+  }
 
-    .header {
-        background-color: var(--theme-primary);
-        height: 56px;
-        line-height: 56px;
-        color: white;
-        padding-left: 16px;
-    }
+  .header {
+    background-color: var(--theme-primary);
+    height: 56px;
+    line-height: 56px;
+    color: white;
+    padding-left: 16px;
+  }
 
-    .shadow {
-        box-shadow: 0 2px 8px #00000088;
-    }
+  .shadow {
+    box-shadow: 0 2px 8px #00000088;
+  }
 
-    main {
-        font-family: sans-serif;
-        text-align: center;
-    }
+  main {
+    font-family: sans-serif;
+    text-align: center;
+  }
 
-    .footer {
-        text-align: center;
-    }
+  .footer {
+    text-align: center;
+  }
 </style>

@@ -17,12 +17,14 @@ body {
 a {
   color: #0064c8;
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-a:visited {
-  color: #0050a0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:visited {
+    color: #0050a0;
+  }
 }
 
 label {
@@ -43,5 +45,3 @@ input, button, select, textarea {
 input:disabled {
   color: #ccc;
 }
-
-/*# sourceMappingURL=global.css.map */

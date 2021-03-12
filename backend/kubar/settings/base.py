@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
     # Third party apps
     'rest_framework',
+    'graphene_django',
     'corsheaders',
 
     # Kubar apps
@@ -137,6 +138,8 @@ STATIC_ROOT = os.path.join(FRONTEND_BASE_DIR, 'build/static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 WHITENOISE_ROOT = os.path.join(FRONTEND_BASE_DIR, 'public')
+
+GRAPHENE = {}
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
