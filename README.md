@@ -21,10 +21,10 @@
 - [Python 3.9](https://www.python.org/)
 - [Django 3.1.7](https://www.djangoproject.com/)
 - [Graphene Django](https://docs.graphene-python.org/)
-- [Django GraphQL JWT](https://django-graphql-jwt.domake.io)
-- [Django GraphQL Auth ](https://django-graphql-auth.readthedocs.io)
+- [Django GraphQL JWT](https://django-graphql-jwt.domake.io/)
+- [Django GraphQL Auth ](https://django-graphql-auth.readthedocs.io/)
 - [gunicorn](https://gunicorn.org/)
-- [Whitenoise](http://whitenoise.evans.io/en/stable/)
+- [Whitenoise](http://whitenoise.evans.io/)
 
 ## Instructions
 

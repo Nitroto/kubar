@@ -3,7 +3,6 @@ django-cors-headers==3.7.0
 django-environ==0.4.5
 dj-database-url==0.5.0
 graphene-django==2.15.0
-django-graphql-jwt==0.3.1
 django-graphql-auth==0.3.16
 psycopg2==2.8.6
 whitenoise==5.2.0
