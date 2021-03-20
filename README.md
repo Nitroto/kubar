@@ -1,12 +1,10 @@
 # Kubar Events manager based on Django REST framework and Svelte
 
-This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to help you deploy with heroku.
-
 ## Tech stack
 
 ### Web
 
-- [Svelte 3](https://svelte.dev/) with
+- [Svelte 3](https://svelte.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [GraphQL](https://graphql.org/)
 - [rollup.js](https://rollupjs.org/)
@@ -22,8 +20,9 @@ This gives you [JSON Web Token](https://jwt.io/) auth and a few extra files to h
 
 - [Python 3.9](https://www.python.org/)
 - [Django 3.1.7](https://www.djangoproject.com/)
-- [Django REST framework](https://www.django-rest-framework.org/)
 - [Graphene Django](https://docs.graphene-python.org/)
+- [Django GraphQL JWT](https://django-graphql-jwt.domake.io)
+- [Django GraphQL Auth ](https://django-graphql-auth.readthedocs.io)
 - [gunicorn](https://gunicorn.org/)
 - [Whitenoise](http://whitenoise.evans.io/en/stable/)
 
