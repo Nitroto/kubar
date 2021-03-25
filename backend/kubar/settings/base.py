@@ -54,6 +54,7 @@ INSTALLED_APPS = [
 
     # Kubar apps
     'kubar_account',
+    'kubar_event',
 ]
 
 MIDDLEWARE = [

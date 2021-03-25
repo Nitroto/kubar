@@ -1,27 +1,38 @@
 <script lang="ts">
+    import { Link, Route, Router } from 'svelte-navigator';
     import Layout from './components/Layout.svelte';
     import ThemeContext from './components/ThemeContext.svelte';
     import ThemeToggle from './components/ThemeToggle.svelte';
+
+    import Home from './components/Home.svelte';
+    import About from './components/About.svelte';
+
+    export let url = '';
 </script>
 
-<ThemeContext>
-    <Layout header hideHeader headerHeight={56} let:scroller>
-        <div slot="header">
-            <div class="header" class:shadow={!!scroller.scroll}>
-                Kubar Events Manager
-                <ThemeToggle />
+<Router url="{url}">
+    <ThemeContext>
+        <Layout header hideHeader headerHeight={56} let:scroller>
+            <div slot="header">
+                <nav class="header" class:shadow={!!scroller.scroll}>
+                    Kubar Events Manager
+                    <Link to="/">Home</Link>
+                    <Link to="about">About</Link>
+                    <ThemeToggle />
+                </nav>
             </div>
-        </div>
-        <main>
-            <h1>List of events</h1>
-        </main>
-        <div slot="footer">
-            <div class="footer" class:shadow={!!scroller.scroll}>
-                Created by Asen Todorov
+            <main>
+                <Route path="/" component="{Home}" />
+                <Route path="about" component={About} />
+            </main>
+            <div slot="footer">
+                <div class="footer" class:shadow={!!scroller.scroll}>
+                    Created by Asen Todorov
+                </div>
             </div>
-        </div>
-    </Layout>
-</ThemeContext>
+        </Layout>
+    </ThemeContext>
+</Router>
 
 <style lang="sass">
   \:global(html)
