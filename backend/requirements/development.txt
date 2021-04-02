@@ -1,6 +1,6 @@
 -r base.txt
 
 factory-boy==3.2.0
-Faker==6.6.2
+Faker==7.0.1
 flake8==3.9.0
 ipython>=7.19.0
