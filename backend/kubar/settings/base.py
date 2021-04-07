@@ -171,3 +171,5 @@ GRAPHQL_JWT = {
         'graphql_auth.mutations.VerifySecondaryEmail',
     ],
 }
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
