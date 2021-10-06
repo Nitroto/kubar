@@ -19,7 +19,7 @@
 ### Backend
 
 - [Python 3.9](https://www.python.org/)
-- [Django 3.2.6](https://www.djangoproject.com/)
+- [Django 3.2.8](https://www.djangoproject.com/)
 - [Graphene Django](https://docs.graphene-python.org/)
 - [Django GraphQL JWT](https://django-graphql-jwt.domake.io/)
 - [Django GraphQL Auth ](https://django-graphql-auth.readthedocs.io/)
