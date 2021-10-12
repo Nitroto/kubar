@@ -11,8 +11,7 @@
     "validate": "svelte-check"
   },
   "engines": {
-    "node": "16.x",
-    "npm": "7.x"
+    "node": "16.x"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",
